@@ -2101,9 +2101,11 @@ app.get('/epg/resolve', async (req, res) => {
 });
 
 /* ------------------- Export / Local run ------------------- */
-module.exports.handler = serverless(app);
+// Vercel uses the default export as the server entrypoint.
+// Export the Express app directly so @vercel/node can handle requests.
+module.exports = app;
 
-// Local debugging helper (disabled for Vercel/serverless deployment)
+// Local debugging helper (disabled for Vercel/serverless deployment by default)
 // Uncomment this block if you want to run locally with `node index.js`
 // if (require.main === module) {
 //   const PORT = process.env.PORT || 7000;
