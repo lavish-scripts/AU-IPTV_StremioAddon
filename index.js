@@ -2103,7 +2103,9 @@ app.get('/epg/resolve', async (req, res) => {
 /* ------------------- Export / Local run ------------------- */
 module.exports.handler = serverless(app);
 
-if (require.main === module) {
-  const PORT = process.env.PORT || 7000;
-  app.listen(PORT, () => console.log('Listening on', PORT));
-}
+// Local debugging helper (disabled for Vercel/serverless deployment)
+// Uncomment this block if you want to run locally with `node index.js`
+// if (require.main === module) {
+//   const PORT = process.env.PORT || 7000;
+//   app.listen(PORT, () => console.log('Listening on', PORT));
+// }
